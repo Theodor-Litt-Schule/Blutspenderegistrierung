@@ -6,12 +6,20 @@ Simple register service for blood donations.
 ```shell
 cd frontend
 ```
+
+### Testing
 ```shell
 npm install
-npm install @sveltejs/adapter-cloudflare
-npm install -D sass
 npm run dev
 ```
+
+### Production
+```shell
+npm run buid
+cd build
+node index.js
+```
+
 
 ## API
 ### Linux
@@ -43,3 +51,26 @@ mkcert -key-file key.pem -cert-file cert.pem localhost
 # Notes
 ## Datenbank
 - The dates in the DB is only saved with the following format: `YYYY-MM-DD`
+
+## .env File
+```txt
+ISERV_CLIENT_ID=
+ISERV_CLIENT_SECRET=
+ISERV_DISCORVERY_URL=https://domain.for.iserv/.well-known/openid-configuration
+SECRET_KEY=
+
+OAUTHLIB_INSECURE_TRANSPORT=1 # idk we have to play with this for a way it works
+
+EMAIL_PASSWORD=
+SMTP_SERVER=
+STARTTLS_PORT=
+SENDER_EMAIL=eu
+
+API_DOMAIN=https://blutspenden.novacodes.eu/api
+FRONTENT_DOMAIN=https://blutspenden.novacodes.eu
+#API_DOMAIN=http://localhost:5000
+#API_DOMAIN=https://127.0.0.1:5000
+#FRONTENT_DOMAIN=http://localhost:5173
+```
+**Please edit the Domain names. This are only examples from our current config**
+
