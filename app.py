@@ -31,9 +31,9 @@ app = Flask(__name__)
 CORS(app)
 app.secret_key = os.getenv("SECRET_KEY") or os.urandom(24)
 
+
 # OAuth client setup
 client = WebApplicationClient(ISERV_CLIENT_ID)
-
 
 # Index route which is the first route the users see
 @app.route("/", methods=['POST'])
@@ -127,7 +127,7 @@ def processing():
 @app.route("/appointments")
 def appointments():
     # GET the nearest date on today
-    Appointment.add_appointment("2024-02-06")
+    Appointment.add_appointment("2024-07-02")
     today = date.today()
     old_dates = Appointment.get_dates()
     new_dates = []
@@ -223,4 +223,4 @@ def set_appointment():
 #         return render_template("admin_doner_overview.html", data=data, print=print)
 
 if __name__ == "__main__":
-    app.run(host="127.0.0.1", port=5000, use_reloader=True, debug=True, ssl_context="adhoc")
+    app.run(host="0.0.0.0", port=5000, use_reloader=False, debug=False, ssl_context="adhoc")
